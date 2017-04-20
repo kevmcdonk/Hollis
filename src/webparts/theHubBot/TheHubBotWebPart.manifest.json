@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "1c8196cf-ffa4-4325-aa15-8dfe7c1a940b",
+  "alias": "TheHubBotWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.2",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "1c8196cf-ffa4-4325-aa15-8dfe7c1a940b",
+    "group": { "default": "Under Development" },
+    "title": { "default": "TheHub-Bot" },
+    "description": { "default": "Getting the most from your Digital Workplace" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "TheHub-Bot"
+    }
+  }]
+}
+

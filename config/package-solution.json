@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "the-hub-home-client-side-solution",
+    "id": "9f162020-b4e1-44c5-831a-5176f1a80fb8",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/the-hub-home.sppkg"
+  }
+}

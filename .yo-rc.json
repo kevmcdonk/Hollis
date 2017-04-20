@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "the-hub-home",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "9f162020-b4e1-44c5-831a-5176f1a80fb8"
+  }
+}
