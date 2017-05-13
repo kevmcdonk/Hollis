@@ -33,18 +33,23 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
   public render(): void {
     this.domElement.innerHTML = `<div id="${this.context.instanceId}" class="${styles.thehubbot}"></div>`;
     this.wpInstanceId = this.context.instanceId;
+
+    var user = { id: "userid", name: "unknown" };
+    var bot = { id: "userid", name: "unknown" };
+
     // Get userprofile from SharePoint REST endpoint
+    /*
     var req = new XMLHttpRequest();
     req.open("GET", "/_api/SP.UserProfiles.PeopleManager/GetMyProperties", false);
     req.setRequestHeader("Accept", "application/json");
     req.send();
-    var user = { id: "userid", name: "unknown" };
-    var bot = { id: "userid", name: "unknown" };
+    
     if (req.status == 200) {
       var result = JSON.parse(req.responseText);
       user.id = result.Email;
       user.name = result.DisplayName;
     }
+    */
 
     // Initialize DirectLine connection
     var botConnection = new DirectLine({
@@ -64,20 +69,21 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
       .subscribe(id => console.log("success initializing"));
 
       botConnection.activity$
-      .filter(activity => activity.type == "message" && activity.from.id == "thehubbot")
+      .filter(activity => activity.type == "message" && activity.from.id == "HollisHomeBot")
       .subscribe(a => {
         debugger;
       });
     // Listen for events on the backchannel
     //for (var item in this.properties.botList) {
+      if (this.properties.botList != null && this.properties.botList.length > 0) {
       this.properties.botList.forEach((item, index) => {
     
       var botItem:IBotItem = this.properties.botList[index];
       botItem.InstanceId = this.context.instanceId;
-      debugger;
+      
       
       botConnection.activity$
-      .filter(activity => activity.type == "message" && activity.from.id == "thehubbot" && activity.text.indexOf('@' + botItem.Title) > -1)
+      .filter(activity => activity.type == "message" && activity.from.id == "HollisHomeBot" && activity.text.indexOf('@' + botItem.Title) > -1)
       .subscribe(a => {
           debugger;
         var act: any = a;
@@ -104,10 +110,9 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
           .subscribe(id => console.log("success initializing bot"));
         }
       );
-
     });
 
-    
+      }
     
 
   }
