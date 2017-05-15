@@ -56,6 +56,9 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
       secret: this.properties.mainBotId
     });
 
+    try {
+      if (this.properties.mainBotId != null && this.properties.mainBotId != '') { 
+    
     // Initialize the BotChat.App with basic config data and the wrapper element
     App({
       user: user,
@@ -96,6 +99,7 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
         var bot = { id: "userid", name: "unknown" };
 
         document.getElementById(botItem.InstanceId).innerHTML = '<div>loading</div>';
+
         // Initialize the BotChat.App with basic config data and the wrapper element
         App({
           user: user,
@@ -111,9 +115,19 @@ export default class TheHubBotWebPart extends BaseClientSideWebPart<ITheHubBotWe
         }
       );
     });
-
+      
       }
-    
+    }
+    else 
+    {
+      console.log("Main Bot Id not set");
+    }
+    }
+      catch(e)
+      {
+        console.log('Error retrieving details: ' + e);
+        
+      }
 
   }
 
